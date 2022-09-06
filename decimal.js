@@ -12,6 +12,35 @@ class Decimal {
         this.nor();
         return this.ma*(10**this.ex);
     }
+    getstr () {
+        this.nor();
+        let ret = "";
+        let chs = ["0","1","2","3","4","5","6","7","8","9"];
+        let digs = this.#getdigits(this.ma);
+        if (this.ex<0) {
+            for (let d=0;d<digs.length+this.ex;d++) { ret += chs[digs[d]]; }
+            ret += ".";
+            for (let d=digs.length+this.ex;d<digs.length;d++) { ret += chs[digs[d]]; }
+        }
+        else {
+            for (let d=0;d<digs.length;d++) { ret += chs[digs[d]]; }
+            for (let zc=0;zc<this.ex;zc++) { ret += "0"; }
+        }
+        return ret;
+    }
+    #getdigits (num,n=10) {
+        let dcnt = 0;
+        while (true) {
+            if (n**dcnt>num) { break; }
+            dcnt++;
+        }
+        let ret = new Array(dcnt);
+        for (let d=1;d<=dcnt;d++) {
+            ret[dcnt-d] = num%(n**d)/(n**(d-1));
+            num = num-num%(n**d);
+        }
+        return ret;
+    }
 }
 
 class Deccalc {

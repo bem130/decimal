@@ -10,8 +10,15 @@
 let deccalc = new Deccalc();
 
 console.log(deccalc.add( new Decimal(55,1),new Decimal(45,1) ));
-console.log(deccalc.sub( new Decimal(5,1),new Decimal(13,0) ));
 console.log(deccalc.add( new Decimal(55,1),new Decimal(45,1) ).get());
+console.log(deccalc.add( new Decimal(55,1),new Decimal(45,1) ).getstr());
+
+console.log(deccalc.sub( new Decimal(5,1),new Decimal(13,0) ));
 console.log(deccalc.sub( new Decimal(5,1),new Decimal(13,0) ).get());
+console.log(deccalc.sub( new Decimal(5,1),new Decimal(13,0) ).getstr());
+
+console.log(new Decimal(1523,-1));
+console.log(new Decimal(1523,-1).get());
+console.log(new Decimal(1523,-1).getstr());
 
 </script>
