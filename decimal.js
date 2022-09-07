@@ -1,12 +1,17 @@
 class Decimal {
-    constructor (ma,ex) { // ma*(10^ex)
+    constructor (ma=0,ex=0) { // ma*(10^ex)
         this.ma = ma; this.ex = ex;
+        this.nor();
     }
     nor () {
         while (this.ma%10==0) {
             this.ma /= 10; this.ex++;
         }
         return this;
+    }
+    set (ma,ex) {
+        this.ma = ma; this.ex = ex;
+        this.nor();
     }
     get () {
         this.nor();
